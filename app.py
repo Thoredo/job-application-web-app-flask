@@ -1,6 +1,6 @@
 import os
 from datetime import datetime
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 
@@ -43,6 +43,7 @@ def index():
         )
         db.session.add(form)
         db.session.commit()
+        flash(f"{first_name}, your form was submitted succesfully!", "succes")
 
     return render_template("index.html")
 
